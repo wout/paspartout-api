@@ -4,7 +4,7 @@ An abstraction layer for the Paspartout API.
 
 ## Installation
 
-Use RubyGems to install the heck out of jeweler to get started:
+Use RubyGems to install paspartout-api to get started:
 
 		$ gem install paspartout-api
 
