@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'htmlentities', '~> 4.3.1'
 gem 'httparty', '~> 0.12.0'
 gem 'hashie', '~> 2.0.5'
 

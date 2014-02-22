@@ -1,3 +1,4 @@
+require 'htmlentities'
 require 'httparty'
 require 'hashie'
 
@@ -57,6 +58,10 @@ private
     
     request = HTTParty.get("http://api.paspartout.com/public/v2/#{ @api_key }#{ path }.json")
     result  = Hashie::Mash.new({ body: JSON.parse(request.body) })
+
+    if ''.respond_to?(:html_safe)
+      result = make_html_safe(result)
+    end
     
     if result.error
       @errors.push(result.error)
@@ -65,6 +70,24 @@ private
     else
       result.body
     end
+  end
+
+  def make_html_safe value
+    case value.class.to_s
+    when 'String'
+      value = HTMLEntities.new.decode(value).html_safe
+    when 'Array'
+      value.each.with_index do |v, i|
+        value[i] = make_html_safe(v)
+      end
+    when 'Hash'
+    when 'Hashie::Mash'
+      value.each_pair do |k, v|
+        value[k] = make_html_safe(v)
+      end
+    end
+
+    value
   end
 
 end

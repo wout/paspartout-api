@@ -19,7 +19,7 @@ Jeweler::Tasks.new do |gem|
   gem.license = "MIT"
   gem.summary = %Q{An abstraction layer for the Paspartout API}
   gem.description = %Q{An abstraction layer for the Paspartout API}
-  gem.email = "wout@impinc.co.uk"
+  gem.email = "wout@woutfierens.com"
   gem.authors = ["wout"]
   # dependencies defined in Gemfile
 end
